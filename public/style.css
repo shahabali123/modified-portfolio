@@ -1,0 +1,356 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgba(240, 255, 255, 0.889);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+hr{
+    color: azure;
+}
+.background{
+    height: 100%;
+    width: 100%;
+    background-image: url(background.jpg);
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    /* border: 3px  solid wheat; */
+    background-color: rgba(0, 0, 0, 0.984);
+    position: fixed;
+    z-index: -1;
+}
+header{
+    top: 0;
+    width: 100%;
+    height: 6rem;
+    /* background: conic-gradient(rgb(40, 38, 38), purple, rgb(17, 211, 17), gray, rgb(228, 31, 150), rgb(37, 35, 35)); */
+    background: conic-gradient(purple, orange, purple, orange, purple);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 1;
+    position: fixed;
+    color: rgb(240, 255, 255);
+}
+header:hover{
+    /* background: conic-gradient(blue, red, orange, rgb(7, 126, 7) , rgb(155, 155, 3), blue); */
+    transition: 3s ease;
+
+}
+header a{
+    color: rgb(240, 255, 255);
+}
+.logo{
+    height: 70px;
+    width: 70px;
+}
+.logo img{
+    height: 70px;
+    width: 70px;
+    left: 0.5rem;
+}
+
+a{
+    text-decoration: none;
+}
+.navigation{
+    margin-top: 40px;
+    width: 40%;
+}
+.navigation2{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    z-index: 10;
+    padding: 10px;
+    height: 13rem;
+    width: 7.5rem;
+    border-radius: 7px 0 0 7px;
+    background-color: rgba(255, 166, 0, 0.54);
+    margin-top: 40vh;
+    /* margin-left: 90%; */
+    right: -5rem;
+    position: fixed;
+}
+.navigation2:hover{
+    right: 0;
+    transition: 1s;
+}
+.navigation2 i{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: larger;
+    margin: 10px 0;
+    z-index: 10;
+    cursor: pointer;
+}
+.navigation2 i a{
+    text-decoration: none;
+    color: azure;
+}
+.navigation a{
+    margin: 0 1rem;
+    font-size: 16px;
+}
+
+.social{
+    display: flex;
+    gap: 1rem;
+}
+.social div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+.github{
+    flex-direction: column;
+}
+.social img{
+    height: 40px;
+    width: 40px;
+}
+.hero-section{
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.678);
+    border-radius: 10px;
+}
+    
+.description{
+    height: 100%;
+    width: 50%;
+}
+.description p{
+    font-size: 14px;
+}
+
+.hero-section img{
+    height: 17rem;
+    width: 17rem;
+}
+#main{
+    margin-top: 6rem;
+    padding: 2rem;
+    width: 65%;
+    background-color: rgba(240, 248, 255, 0.084);
+    margin-left: 17.5%;
+}
+
+.skills{
+    height: fit-content;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.678);
+    border-radius: 10px;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 1rem;
+}
+.cards div{
+    height: 122px;
+    width: 100px;
+    background-color: rgba(100, 148, 237, 0.111);
+    padding: 1rem;
+    border-radius: 15px;
+}
+.cards p{
+    text-align: center;
+}
+.cards img{
+    align-self: center;
+    height: 80px;
+    width: 80px;
+}
+.cards .express{
+    width: 16rem;
+}
+.cards .express img{
+    width: 14rem;
+}
+
+.projects{
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.678);
+    border-radius: 10px;
+    justify-content: center;
+}
+.projects div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 16rem;
+    font-size: 13px;
+}
+.daraz img {
+    width: 12rem;
+}
+
+.mini-cards{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.678);
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .navigation{
+       display: none;
+    }
+    .navigation2{
+        display: flex;
+        flex-direction: column;
+        justify-content: baseline;
+        z-index: 10;
+        padding: 10px;
+        height: 13rem;
+        width: 7.5rem;
+        border-radius: 7px 0 0 7px;
+        background-color: rgba(255, 166, 0, 0.54);
+        margin-top: 40vh;
+        /* margin-left: 90%; */
+        right: -5rem;
+        position: fixed;
+    }
+    .navigation2:hover{
+        right: 0;
+        transition: 1s;
+    }
+    .navigation2 i{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: larger;
+        margin: 10px 0;
+        z-index: 10;
+        cursor: pointer;
+    }
+    .navigation2 i a{
+        text-decoration: none;
+        color: azure;
+    }
+    .hero-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .description{
+        width: 100%;
+    }
+    .description p{
+        font-size: 10px;
+    }
+    .hero-image img{
+        height: 8rem;
+        width: 8rem;
+    }
+    #main{
+        margin-top: 4rem;
+        width: 100%;
+        margin-left: -2%;
+    }
+    header{
+        height: 4rem;
+    }
+    header h1{
+        font-size: 1.1rem;
+        font-weight: bolder;
+    }
+    header a{
+        font-size: .7rem;
+    }
+    .logo{
+        display: flex;
+        align-items: center;
+    }
+    header .logo img{
+        height: 3rem;
+        width: 3rem;
+    }
+    header .github img{
+        height: 2rem;
+        width: 2rem;
+    }
+    header .linkedin img{
+        height: 2rem;
+        width: 2rem;
+    }
+
+    
+
+
+
+    .info{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 400px){
+    .email{
+        display: none;
+    }
+    footer{
+        height: 4rem;
+    }
+    footer h1{
+        display: none;
+    }
+    footer a{
+        font-size: .7rem;
+    }
+    footer .logo img{
+        height: 3rem;
+        width: 3rem;
+    }
+    footer .github img{
+        height: 2rem;
+        width: 2rem;
+    }
+    footer .linkedin img{
+        height: 2rem;
+        width: 2rem;
+    }
+
+}
+
+footer{
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem 0 1rem ;
+
+}
+footer a{
+    color: azure;
+}
+footer .aButton{
+    border: 2px solid white;
+    padding: 0 10px;
+    border-radius: 5px;
+}
