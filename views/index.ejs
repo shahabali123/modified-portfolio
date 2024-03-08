@@ -125,41 +125,16 @@
     <br>
 
     <div class="mini-cards">
-        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Project Showcase</h5>
-              <p class="card-text">Explore a collection of my latest projects, ranging from responsive websites to dynamic web applications. Each project showcases my skills and creativity in web development.</p>
-            </div>
-          </div>
-          <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Skill Set
-            </h5>
-              <p class="card-text">Discover my proficiency in HTML, CSS, JavaScript, React, Node.js, and more. With a strong foundation in front-end and back-end technologies, I'm equipped to tackle diverse challenges in web development.</p>
-            </div>
-          </div>
-          <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Experience
-            </h5>
-              <p class="card-text">Dive into my journey as a web developer, where I've collaborated with teams to deliver innovative solutions for clients across various industries. From concept to launch, I bring passion and dedication to every project.</p>
-            </div>
-          </div>
-          <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Education
-            </h5>
-              <p class="card-text">Learn about my educational background and how it has shaped my career in web development. With a solid foundation in computer science and continuous learning, I'm always striving for excellence in my field.</p>
-            </div>
-          </div>
-          <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Get in Touch
-            </h5>
-              <p class="card-text">Connect with me to discuss potential collaborations, project ideas, or just to say hello! I'm always open to new opportunities and would love to hear from you.</p>
-            </div>
-          </div>
-          
+        <% for( let card of allCards ) { %>
+            <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><%= card.title %></h5>
+                  <p class="card-text"><%=  card.description %></p>
+                  <form action="/home/<%- card._id %>/edit" method="get"> <button class="btn btn-warning">Edit Post</button></form>
+                  &nbsp; <button type="button" class="btn btn-danger">Delete Post</button>
+                </div>
+              </div>
+        <% } %>
     </div>
     <br>
           <hr>
