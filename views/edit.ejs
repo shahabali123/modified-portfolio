@@ -1,7 +1,14 @@
 <%- include("includes/header.ejs") %>
+
 <div id="main">
+    <h1>Edit Card</h1>
+    <form action="/home/<%- editCard._id %>?_method=PUT" method="post">
     <input type="text" name="title" placeholder="<%= editCard.title %>"><br><br>
-<textarea name="description" cols="30" rows="10"><%= editCard.description %></textarea>
+<textarea name="description" cols="30" rows="10" placeholder="Update Description"></textarea>
+<br>
+
+    <button class="btn btn-success">Update</button>
+</form>
 </div>
 
 </body>

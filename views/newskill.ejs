@@ -1,0 +1,15 @@
+<%- include("includes/header.ejs") %>
+
+<div id="main">
+    <h1>Add New Skill</h1>
+    <form action="/home/newskill" method="post">
+    <input type="text" name="title" placeholder="Title of the card"><br><br>
+<textarea name="image" cols="30" rows="10" placeholder="add a png image link"></textarea>
+<br>
+
+    <button class="btn btn-success">Add New Skill Card</button>
+</form>
+</div>
+
+</body>
+</html>

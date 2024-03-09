@@ -17,14 +17,16 @@ app.use(express.static("public") );  // static files ki location define ki
 app.set("view engine", "ejs"); // view engine ko ejs set kr diya
 app.set("views", path.join(__dirname, "/views") ); // views directory ka path define kiya jahan express ejs files ko view kry ga
 app.use(express.static(path.join(__dirname, "/public"))); // public directory k path ko set kiya
+app.use(express.urlencoded({extended: true})); // Middleware for parsing URL-encoded request bodies
 
 app.use(express.static(path.join(__dirname, "/public/javaScript")));
-app.use(express.static(path.join(__dirname, "/public/CSS")));
+// app.use(express.static(path.join(__dirname, "/public/CSS")));
 // ye public dir me 2 alag alag folder ko serve krny ki liye path set kiya agar koi or sub dir ka b path define krna hai to aisy e hoga, jesy pictures k liye koi dir bnai ya sounds k liye to isi tra path set hoga
 app.use(methodoverride("_method"));
 
 
 // Schemas
+// schema for cards
 const cardSchema = new mongoose.Schema({
     title: { 
         type: String ,
@@ -37,28 +39,19 @@ const cardSchema = new mongoose.Schema({
 });
 const Card = mongoose.model("Card" ,cardSchema);
 
-// let card = new Card({
-//     title: "Project Showcase",
-//     description: "Explore a collection of my latest projects, ranging from responsive websites to dynamic web applications. Each project showcases my skills and creativity in web development."
-// });
-// card.save();
-// let cards = Card.insertMany([{
-//     title: "Skill Set",
-//     description: "Discover my proficiency in HTML, CSS, JavaScript, React, Node.js, and more. With a strong foundation in front-end and back-end technologies, I'm equipped to tackle diverse challenges in web development."
-// },
-// {
-//     title: "Work Experience",
-//     description: "Dive into my journey as a web developer, where I've collaborated with teams to deliver innovative solutions for clients across various industries. From concept to launch, I bring passion and dedication to every project."
-// },
-// {
-//     title: "Education",
-//     description: "Learn about my educational background and how it has shaped my career in web development. With a solid foundation in computer science and continuous learning, I'm always striving for excellence in my field."
-// },
-// {
-//     title:  "Achievements",
-//     description: "Connect with me to discuss potential collaborations, project ideas, or just to say hello! I'm always open to new opportunities and would love to hear from you."
-// }
-// ]);
+// schema for skills
+const skillSchema = new mongoose.Schema({
+    image:{
+        type: String,
+        required: true
+    },
+    title:{
+        type: String,
+        required: true
+    }
+});
+const Skill = mongoose.model("Skill", skillSchema);
+
 
 // ___________________________________________
 
@@ -69,17 +62,68 @@ app.listen(port, ()=>{
 
 app.get("/home", async(req, res)=>{
     let allCards = await  Card.find({});
-    res.render("index", {allCards});
+    let skills = await Skill.find({});
+    res.render("index", {allCards, skills});
 })
 
+
+// edit cards route "2 steps"
 app.get("/home/:id/edit", async(req, res)=>{
     const id= req.params.id;
     let editCard = await Card.findById(id);
     res.render("edit.ejs", {editCard});
 })
+// updating edited card
+app.put("/home/:id", async(req, res)=>{
+    let id = req.params.id;
+    let {title, description} = req.body;
+    let update = await Card.findByIdAndUpdate(id, {
+        title: title,
+        description: description
+    },
+    {new: true});
+    res.redirect('/home');
+})
 
+// delete card
+app.delete("/home/:id", async(req, res)=>{
+    let id = req.params.id;
+    await Card.findByIdAndDelete(id);
+    res.redirect('/home');
+});
 
+// create new card route
+app.get("/home/new", (req, res)=>{
+    res.render('new');
+});
 
+// submitting new card
+app.post("/home/new", async(req, res)=>{
+    let  {title, description}= req.body;
+    let newCard = new Card ({
+        title:  title,
+        description: description
+});
+    await newCard.save();
+    res.redirect('/home');
+});
+
+// ______________________________________________________
+// add new skill rouute
+app.get("/home/newskill", (req, res)=>{
+    res.render("newskill");
+});
+
+// submiting a new skill to the database
+app.post("/home/newskill", async(req, res)=>{
+    let {title, image}= req.body;
+    let newskill = new Skill({
+        image: image,
+        title: title
+    });
+    await newskill.save();
+    res.redirect("/home");
+})
 
 
 
